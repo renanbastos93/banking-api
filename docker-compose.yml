@@ -1,0 +1,21 @@
+version: "3.4"
+services:
+  api:
+    build:
+      context: ./ci
+      dockerfile: dockerfile
+    container_name: api
+    command: "run"
+    volumes:
+      - .:/app
+    ports:
+      - "3000:3000"
+    stdin_open: true
+    tty: true
+    networks:
+      - bank-net
+
+networks:
+  bank-net:
+    external:
+      name: bank-net
